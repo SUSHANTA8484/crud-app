@@ -1,0 +1,64 @@
+<%- include("header.ejs") %>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+           <%= title %>
+        </title>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0/css/bootstrap.min.css"
+            integrity="sha512-NZ19NrT58XPK5sXqXnnvtf9T5kLXSzGQlVZL9taZWeTBtXoN3xIfTdxbkQh6QSoJfJgpojRqMfhyqBAAEeiXcA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+            integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+
+    <body>
+        <div>
+            <div class="table-responsive container my-4">
+              <% if (users!="") { %>
+                <table class="table table-striped text-center">
+                    <thead>
+                        <tr class="table-dark">
+                            <th>no</th>
+                            <th>name</th>
+                            <th>email</th>
+                            <th>phone</th>
+                            <th>action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% users.forEach((user, index) => { %>
+                           
+                        <tr>
+                            <td><%= index+1 %></td>
+                            <td><%= user.name %></td>
+                            <td> <%= user.email %> </td>
+                            <td><%= user.phone %></td>
+                            <td>
+                                <a  class="text-success" href="/edit/<%= user._id %>"><li class="fas fa-edit fa-lg mx-1"></li></a>
+                                <a class="text-danger" href="/delete/<%= user._id %>"><li class="fas fa-trash fa-lg mx-1"></li></a>
+                            </td>
+                        </tr>
+
+                        <% }) %>
+                    </tbody>
+                 </table>
+              <% }else { %>
+                <p>no data found</p>
+                <% } %>
+            </div>
+
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0/js/bootstrap.bundle.min.js"
+                integrity="sha512-Tkt/sYlAym9X81DPqqbCjU6bMl9HmsehhtxjnZu0K1TN9Ygu8h2D7jZbn59lbDNbbIG7DUukGkjKJbp/wDpKGg=="
+                crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        </div>
+    </body>
+
+    </html>
